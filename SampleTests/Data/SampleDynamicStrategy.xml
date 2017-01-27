@@ -1,0 +1,3 @@
+﻿<Rules namespace="StrategyResolver.Strategy" assemblyname="StrategyResolver">
+  <Rule name="SimpleDynamicStrategy`1" executionOrder="1" validation="@IsStatusActive = true" message="Dynamic strategy OK" />
+</Rules>

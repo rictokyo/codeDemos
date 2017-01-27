@@ -1,0 +1,16 @@
+﻿<Window x:Class="CopyListener.ClipboardWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:copyListener="clr-namespace:CopyListener" Height="0" Width="0"
+             mc:Ignorable="d" Visibility="Hidden" Left="-10" Top="-20"
+             ShowInTaskbar="False" WindowStyle="None" WindowStartupLocation="Manual" ResizeMode="NoResize"
+             d:DesignHeight="0" d:DesignWidth="0">
+    <Window.Resources>
+        <copyListener:ClipboardMonitor x:Key="ClipWatch" />
+    </Window.Resources>
+    <Grid>
+
+    </Grid>
+</Window>
