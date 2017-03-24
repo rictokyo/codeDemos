@@ -1,0 +1,16 @@
+WinTester/obj/
+DotNetInjecter/obj/
+KeyBasedGenericDeserializer/obj/
+DotNetInjectable/obj/
+CopyListener/obj/
+DotNetInject/obj/
+ConsoleTester/obj/
+LocalAppSettingsManager/obj/
+Communicator/obj/
+Monad/obj/
+SimpleConsoleApplication/obj/
+SimpleWindowsApplication/bin/
+SimpleWindowsApplication/obj/
+SampleBundleApi/obj/
+SampleTests/obj/
+StrategyResolver/obj/
