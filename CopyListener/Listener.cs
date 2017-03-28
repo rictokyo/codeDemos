@@ -2,14 +2,16 @@
 using System.Threading;
 using System.Windows;
 using SampleBundleApi;
+using System.Windows.Threading;
 
 namespace CopyListener
 {
-    class Listener : Sample, IListener, IDisposable
+    class Listener : Sample, IListener
     {
         private readonly ICommunicator communicator;
         private ClipboardMonitor clipboardMonitor;
         private bool startWhenReady;
+        private readonly Dispatcher myDispatcher = Dispatcher.CurrentDispatcher;
 
         public Listener(string sampleName, ICommunicator communicator)
             : base(sampleName)
@@ -30,16 +32,20 @@ namespace CopyListener
             {
                 try
                 {
-                    var clipboardWindow = new ClipboardWindow();
-                    clipboardWindow.Show();
-                    this.clipboardMonitor = clipboardWindow.FindResource("ClipWatch") as ClipboardMonitor;
+                    myDispatcher.BeginInvoke((Action)(() => {
 
-                    if (this.startWhenReady)
-                    {
-                        StartListening();
-                    }
+                        var clipboardWindow = new ClipboardWindow();
+                        clipboardWindow.Show();
+                        this.clipboardMonitor = clipboardWindow.FindResource("ClipWatch") as ClipboardMonitor;
 
-                    System.Windows.Threading.Dispatcher.Run();
+                        if (this.startWhenReady)
+                        {
+                            StartListening();
+                        }
+                        
+                        Dispatcher.Run();
+                    }));
+                    
                 }
                 catch (Exception exc)
                 {
@@ -85,11 +91,11 @@ namespace CopyListener
             if (this.clipboardMonitor != null)
             {
                 clipboardMonitor.ClipboardData -= clipboardMonitor_ClipboardData;
-                this.clipboardMonitor.Close();
+                myDispatcher.BeginInvoke((Action)(() => this.clipboardMonitor.Close()));
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             StopListening();
         }

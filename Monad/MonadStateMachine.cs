@@ -31,5 +31,10 @@ namespace Monad
                 monad2.DoStuff();
             }
         }
+
+        public override void Dispose()
+        {
+
+        }
     }
 }

@@ -8,6 +8,8 @@
         }
 
         public string SampleName { get; private set; }
+
+        public abstract void Dispose();
         public abstract void Start();
     }
 }

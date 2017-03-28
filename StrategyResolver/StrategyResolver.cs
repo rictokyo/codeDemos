@@ -22,5 +22,10 @@ namespace StrategyResolver
         {
             
         }
+
+        public override void Dispose()
+        {
+
+        }
     }
 }

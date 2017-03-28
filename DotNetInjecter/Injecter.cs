@@ -7,7 +7,7 @@ using SampleBundleApi.Injector;
 
 namespace DotNetInjecter
 {
-    public class Injecter : Sample, IInjecter, IDisposable
+    public class Injecter : Sample, IInjecter
     {
         private readonly ICommunicator communicator;
         private readonly IInterProcessHelper processHelper;
@@ -42,7 +42,7 @@ namespace DotNetInjecter
             this.processHelper.InjectService<ServiceLoader>(sampleProcess);
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             AppDomain.CurrentDomain.ProcessExit -= Injecter_Exited;
 

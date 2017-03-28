@@ -16,15 +16,21 @@ namespace ConsoleTester
 
             var i = 0;
 
+            
+            Console.WriteLine();
+
             foreach (ISample sample in samples.Values)
             {
                 Console.WriteLine("{0} - {1}", sample.SampleName, i++);
             }
 
+            Console.WriteLine();
+            Console.WriteLine("{0} - {1}", "Quit", "q");
+
             Console.WriteLine("Enter a choice:");
             var choice = Console.ReadLine();
 
-            if (!string.IsNullOrEmpty(choice))
+            if (!(string.Compare(choice, "q", StringComparison.InvariantCultureIgnoreCase) == 0) && !string.IsNullOrEmpty(choice))
             {
                 int choiceNumber;
 
@@ -40,6 +46,12 @@ namespace ConsoleTester
             }
 
             Console.WriteLine("Press any key to exit..");
+
+            foreach(ISample sample in samples.Values)
+            {
+                sample.Dispose();
+            }
+
             Console.ReadLine();
         }
     }
